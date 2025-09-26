@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://do7e0p467m4c3"]
+
+[ext_resource type="Script" uid="uid://cbud8cr2o3cd7" path="res://playercontroller.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://nmg61wmnbaps" path="res://assets/images/main_player.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bmsy7fh0s80j" path="res://interactions/interacting_component.tscn" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(695, 1375)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 78.0
+height = 266.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(87.4999, -2.50004)
+shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 8)
+shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="InteractingComponent" parent="." instance=ExtResource("3_qhqgy")]

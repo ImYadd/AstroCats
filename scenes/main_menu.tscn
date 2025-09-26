@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://ctqk0klcvp88t"]
+
+[ext_resource type="Texture2D" uid="uid://ddskfm1pocl8b" path="res://assets/images/button/start_button.png" id="1_jk1qb"]
+[ext_resource type="Script" uid="uid://cil0h0h5skavh" path="res://scenes/main_menu.gd" id="1_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://cocyk6ufvydrt" path="res://assets/images/button/start_button_press.png" id="2_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://cw3leh4bxm12q" path="res://assets/images/startscreen.png" id="2_flqon"]
+[ext_resource type="Texture2D" uid="uid://bk14q2x75q0tk" path="res://assets/images/button/start_button_hover.png" id="3_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://lppl2a1aqiya" path="res://assets/images/button/options_button.png" id="4_flqon"]
+[ext_resource type="Texture2D" uid="uid://ckjj73drflwix" path="res://assets/images/button/options_button_press.png" id="5_rcqid"]
+[ext_resource type="Texture2D" uid="uid://dxplcr63pwj45" path="res://assets/images/button/options_button_hover.png" id="6_1ajci"]
+[ext_resource type="Texture2D" uid="uid://ceby1btdlcxdk" path="res://assets/images/button/exit_button.png" id="7_7b55j"]
+[ext_resource type="Texture2D" uid="uid://c41tpiny6wdw1" path="res://assets/images/button/exit_button_press.png" id="8_5pajh"]
+[ext_resource type="Texture2D" uid="uid://cmnm23u2txiif" path="res://assets/images/button/exit_button_hover.png" id="9_j7ex8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcqid"]
+texture = ExtResource("2_flqon")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lgwnu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rcqid")
+
+[node name="button" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -304.0
+offset_top = 782.0
+offset_right = 304.0
+offset_bottom = -167.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start" type="TextureButton" parent="button"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("1_jk1qb")
+texture_pressed = ExtResource("2_5dd4i")
+texture_hover = ExtResource("3_lgwnu")
+
+[node name="options" type="TextureButton" parent="button"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("4_flqon")
+texture_pressed = ExtResource("5_rcqid")
+texture_hover = ExtResource("6_1ajci")
+
+[node name="exit" type="TextureButton" parent="button"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("7_7b55j")
+texture_pressed = ExtResource("8_5pajh")
+texture_hover = ExtResource("9_j7ex8")
+
+[connection signal="pressed" from="button/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="button/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="button/exit" to="." method="_on_exit_pressed"]

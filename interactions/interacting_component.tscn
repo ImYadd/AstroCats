@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmsy7fh0s80j"]
+
+[ext_resource type="FontFile" uid="uid://be3fpfdl1qoi7" path="res://Minecraft.ttf" id="1_6p3la"]
+[ext_resource type="Script" uid="uid://ckkxa51yx833c" path="res://interactions/interacting_component.gd" id="1_prdg1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prdg1"]
+radius = 103.019
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ftt3"]
+font = ExtResource("1_6p3la")
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InteractingComponent" type="Node2D"]
+script = ExtResource("1_prdg1")
+
+[node name="InteractRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
+shape = SubResource("CircleShape2D_prdg1")
+
+[node name="InteractLabel" type="Label" parent="."]
+z_index = 10
+offset_left = -100.0
+offset_top = -196.0
+offset_right = 103.0
+offset_bottom = -165.0
+size_flags_horizontal = 4
+text = "[E] to interact"
+label_settings = SubResource("LabelSettings_8ftt3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0dofgqdkofi4"]
+
+[ext_resource type="Texture2D" uid="uid://b6gpx8810cq1m" path="res://assets/images/spaceship_interior.png" id="1_k15hy"]
+[ext_resource type="Script" uid="uid://bptov6l7f4xr" path="res://scenes/computer_task.gd" id="2_2dl0f"]
+[ext_resource type="PackedScene" uid="uid://do7e0p467m4c3" path="res://scenes/player.tscn" id="2_qxeao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njgod"]
+radius = 18.1108
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(642, 514)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -520.0
+offset_right = 1586.0
+offset_bottom = 1261.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.583361, 0.583361)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_k15hy")
+
+[node name="ComputerTask" type="Area2D" parent="TextureRect"]
+position = Vector2(1095.38, 891.386)
+scale = Vector2(1.7142, 1.7142)
+script = ExtResource("2_2dl0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/ComputerTask"]
+position = Vector2(350, 3)
+shape = SubResource("CircleShape2D_njgod")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.583361, 0.583361)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+physics_interpolation_mode = 1
+texture_filter = 1
+position = Vector2(-353.126, 17.1421)
+scale = Vector2(0.661948, 0.661948)
+polygon = PackedVector2Array(-422, -163, -421, 98, 1706, 97, 1706, -163, -420, -163, -415, -1447, 1729, -1525, 2499, -1473, 2756, -766, 2481, 738, 2361, 1606, 1582, 1665, -173, 1565, -1198, 1509, -1924, 1236, -1966, 94, -1523, -1084, -1131, -1435, -460, -1435, -415, -1375)
+
+[node name="player" parent="." instance=ExtResource("2_qxeao")]
+position = Vector2(-344, 16)
+scale = Vector2(0.25, 0.25)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(3.5, 3.5)
